@@ -1,80 +1,114 @@
-const music= document.querySelector("audio");
-const playPause= document.getElementById("playPause");
-const img = document.querySelector("img");
-let isPlaying=false;
-const title= document.getElementById("songTitle");
-const artist= document.getElementById("singerName");
-const next= document.getElementById("forward");
-const pre= document.getElementById("backward");
-const songs =[
+const songs = [
+  {
+    name: "Durga Mata",
+    title: "Hey Kalratri Hey Kalyani",
+    artist: "Jubin Nautiyal",
+    audiosrc: "musics/durgamata.mp3",
+    imgsrc: "images/durgamata.jpg",
+  },
+  {
+    name: "voilin",
+    title: "Bilionera",
+    artist: "Otilia Bruma",
+    audiosrc: "musics/voilin.mp3",
+    imgsrc: "images/voilin.jpg",
+  },
+  {
+    name: "tabla",
+    title: "Honthon Se Choolo Tum",
+    artist: "Jagjeet Singh",
+    audiosrc: "musics/tabla.mp3",
+    imgsrc: "images/tabla.jpg",
+  },
 
-{
-    name:"durgamata",
- title:"Hey-Kalratri-Hey-Kalyani",
-    artist:"Jubin Nautiyal",
-},
-{
-    name:"voilin",
- title:"Bilionera",
-    artist:"Otilia Bruma",
-},
-{
-    name:"tabla",
- title:"Honthon Se Choolo Tum",
-    artist:"Jagjeet Singh",
-},
-
-{
+  {
     name: "Aanand",
-    title:"Ye tune kya kiya",
-    artist:"Javed Bashir",
-},
-{
-  name:"dolls",
-   title:"Tera Hone Laga Hoon ",
-    artist:"Atif Aslam",
-},
-]
+    title: "Ye tune kya kiya",
+    artist: "Javed Bashir",
+    audiosrc: "musics/Aanand.mp3",
+    imgsrc: "images/Aanand.jpg",
+  },
+  {
+    name: "dolls",
+    title: "Tera Hone Laga Hoon ",
+    artist: "Atif Aslam",
+    audiosrc: "musics/dolls.mp3",
+    imgsrc: "images/dolls.jpg",
+  },
+];
 
-const playMusic = ()=>{
-    isPlaying=true;
-    music.play();
-    playPause.classList.replace("fa-play","fa-pause");
-    img.classList.add("rotation");
-
-}; 
-const pauseMusic= ()=>{
-     isPlaying=false;
-    music.pause();
-    playPause.classList.replace("fa-pause","fa-play");
-    img.classList.remove("rotation");
-
-
-};   
-playPause.addEventListener("click",()=>{
-    if(isPlaying){
-        pauseMusic();
-    }else{
-        playMusic();
-    }
-}) 
-
-const loadSong =(songs)=>{
-title.textContent=songs.title;
-artist.textContent=songs.artist;
-music.src="musics/"+songs.name+".mp3";
-img.src="images/"+songs.name+".jpg";
+const playPause = document.getElementById("playPause");
+const music = document.querySelector("audio");
+const forward = document.getElementById("forward");
+const backward = document.getElementById("backward");
+const singerName = document.getElementById("singerName");
+const songTitle = document.getElementById("songTitle");
+const images = document.querySelector("img");
+const progressline = document.querySelector(".progressline");
+let progrees_line_dark = document.getElementsByClassName("progrees_line_dark");
+let current_time = document.querySelector("#current_time p");
+let updateTime = document.querySelector("#update_time p");
+let isPlaying = true;
+let count = 0;
+const pause = () => {
+  music.pause();
+  playPause.classList.replace("fa-pause", "fa-play");
+  isPlaying = true;
+  images.classList.remove("rotation");
 };
-songIndex=0;
-const nextSong=() =>{
-    songIndex=(songIndex+1)%songs.length;
-loadSong(songs[songIndex]);
-playMusic();
-}
-const preSong=() =>{
-    songIndex=(songIndex-1+songs.length)%songs.length;
-loadSong(songs[songIndex]);
-playMusic();
-}
-next.addEventListener("click",nextSong);
-pre.addEventListener("click",preSong);
+
+const play = () => {
+  music.play();
+  playPause.classList.replace("fa-play", "fa-pause");
+  images.classList.add("rotation");
+  isPlaying = false;
+};
+
+const musicPlayer = () => {
+  isPlaying ? play() : pause();
+};
+const farwardMusic = () => {
+  count = (count + 1) % songs.length;
+  singerName.textContent = songs[count].artist;
+  songTitle.textContent = songs[count].title;
+  music.src = songs[count].audiosrc;
+  images.src = songs[count].imgsrc;
+  play();
+};
+const backwardmusic = () => {
+  count = (count - 1 + songs.length) % songs.length;
+  singerName.textContent = songs[count].name;
+  songTitle.textContent = songs[count].title;
+  music.src = songs[count].audiosrc;
+  images.src = songs[count].imgsrc;
+  play();
+};
+playPause.addEventListener("click", musicPlayer);
+forward.addEventListener("click", farwardMusic);
+backward.addEventListener("click", backwardmusic);
+music.addEventListener("timeupdate", (e) => {
+  const { currentTime, duration } = e.srcElement;
+  let progressTime = (currentTime / duration) * 100;
+  progrees_line_dark[0].style.width = `${progressTime}%`;
+  const minuteend = Math.floor(duration / 60);
+  const secend = Math.floor(duration % 60);
+  const minutestart = Math.floor(currentTime / 60);
+  const secstart = Math.floor(currentTime % 60);
+  if (duration) {
+    updateTime.textContent = `${minuteend}:${secend}`;
+  }
+  current_time.textContent = ` ${minutestart}:${secstart}`;
+
+  if (secstart >= 0 && secstart <= 9) {
+    current_time.textContent = `${minutestart}:0${secstart}`;
+  }
+  if (currentTime === duration) {
+    farwardMusic();
+  }
+});
+progressline.addEventListener("click", (e) => {
+  const { duration } = music;
+  const progressTouch = (e.offsetX / e.srcElement.clientWidth) * duration;
+  music.currentTime = progressTouch;
+  play();
+});

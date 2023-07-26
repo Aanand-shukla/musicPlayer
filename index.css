@@ -1,94 +1,168 @@
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
-html{
+
+html {
     font-size: 62.5%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "jost", sans-serif;
     width: 100vw;
     height: 100vh;
-    background-color: #f6f6f6;
-    display: grid;
-    place-items:center;
+    background-color: #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.main{
-    
-    background-color:#ffffff;
-    width:25rem;
-    height: 35rem;
-    border-radius:2.5rem;
-    padding: 0 1.2rem 3rem 0.5rem rgb(0, 0, 0,0.2);
+
+.main {
+    /* height: 40rem; */
+    /* width: 28rem; */
+    padding: 2rem 1rem;
+    background-color: #ffffff;
+    padding: 1.5rem 3rem;
+    border-radius: 2.5rem;
+    padding: 0 1.2rem 3rem 0.5rem rgb(0, 0, 0, 0.2);
     box-shadow: 1.2rem;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
-img{
+
+.main:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+img {
     width: 100%;
     height: 100%;
-    border-radius: 50%; 
+    border-radius: 50%;
+    /* object-fit: x; */
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
-.imgBox{
+
+.imgBox {
     height: 18rem;
-    width:18rem;
-    place-items: center;
-   margin: auto; 
-   margin-top: 2rem;
+    width: 18rem;
+    /* place-items: center; */
+    margin: auto;
+    margin-top: 2rem;
 }
-#songTitle{
+
+#songTitle {
     color: black;
     text-shadow: 1rem;
     font-size: 20px;
     padding-top: 2rem;
 }
 
-#singerName{
-    color: lightslategrey;
+#singerName {
+    color: rgb(166, 183, 201);
     padding: 1rem;
 }
-.icons{
+
+.icons {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 2.5rem;
+    margin-top: 3rem 0.3rem;
+    /* border: 2px solid red; */
 }
-.fas{
-    color:black;
+
+.fas {
+    color: #111;
     font-size: 2rem;
     cursor: pointer;
-     display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     display: flex;
     align-items: center;
-    margin-right: 2.5rem;
-    margin-left: 1.8rem;
 }
-.fas:hover{
-   color:violet
+
+.fas:hover {
+    filter: drop-shadow(0px 0px 1px #f6f6f6)
 }
-#playPause{
+
+#playPause {
     background-color: black;
     color: #f6f6f6;
     font-size: 1.8rem;
     height: 35px;
     width: 35px;
 }
-#playPause.fas{
-   border-radius: 50%; 
-   padding: 10px;   
+
+#playPause.fas {
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
-#playPause.fas:hover{
+
+#playPause.fas:hover {
     background-color: #f6f6f6;
-    color: black;
+    color: #111;
     box-shadow: white;
+    box-shadow: 0 1rem 2rem 0.2rem rgba(0, 0, 0, 0.4);
 }
-.rotation{
-    animation: rotateplayer 2s linear infinite;
+
+.rotation {
+    animation: rotateplayer 3s linear infinite;
 }
-@keyframes rotateplayer{
-    from{
+
+.progressline {
+    margin: 3.4rem 0rem;
+    width: 100%;
+    height: 5px;
+    box-shadow: 0px 4px 10px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.current_time {
+    position: absolute;
+    top: -20px;
+    left: 0
+}
+
+.progressline p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.update_time {
+    position: absolute;
+    top: -20px;
+    right: 0
+}
+
+.progrees_line_dark {
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 0%;
+    border-radius: 8px;
+}
+
+@keyframes rotateplayer {
+    from {
         transform: rotate(0deg);
     }
-    to{
+
+    to {
         transform: rotate(360deg);
     }
 }
+
+/* .fa-backward {
+    margin-right: 1rem;
+}
+
+.fa-farward {
+    margin-left: 1rem;
+} */
