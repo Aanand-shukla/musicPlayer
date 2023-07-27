@@ -1,6 +1,6 @@
 
 # Project Title
-Music Player with Progress Bar
+Music Player 
 
 # Description
 
