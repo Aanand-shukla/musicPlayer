@@ -97,31 +97,14 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 Aanand Shukla, an adept frontend developer, adept in HTML, CSS, and JavaScript, crafting engaging and user-friendly interfaces. Skilled in React , creating dynamic web applications. Committed to responsive design principles, ensuring seamless experiences on diverse devices. Collaborative team player, valuing feedback and fostering innovation. Continuously learning and adapting to emerging trends, prioritizing user experience. Enthusiastic about delivering high-quality products, keen on new challenges, and striving to excel in the ever-evolving tech industry.
 
 
-## Acknowledgements
-
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
 
-## Deployment
-
-To deploy this project run
-
-```bash
-  npm run deploy
-```
-
-
-## Documentation
-
-[Documentation](https://linktodocumentation)
 
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)]()
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aanand-shukla)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Shuklagii?t=Ut9TgQGsajoLohvLoJnprg&s=09)
 
 
 ## Authors
